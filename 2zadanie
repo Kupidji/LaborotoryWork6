@@ -1,0 +1,83 @@
+#TicTacToe
+
+gameField = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
+currentUser = True
+
+
+def printCurrentField():
+    print("  A B C")
+    for i in gameField:
+        for i2 in i:
+            print(i2, end=' ')
+        print()
+
+
+def getNumberFromUser():
+    print("Введите число от 1 до 9")
+    num = int(input())
+    return num
+
+
+def checkGameState():
+    if gameField[0][0] == "X" and gameField[0][1] == "X" and gameField[0][2] == "X":
+        return True
+    if gameField[1][0] == "X" and gameField[1][1] == "X" and gameField[1][2] == "X":
+        return True
+    if gameField[2][0] == "X" and gameField[2][1] == "X" and gameField[2][2] == "X":
+        return True
+    if gameField[0][0] == "X" and gameField[1][0] == "X" and gameField[2][0] == "X":
+        return True
+    if gameField[0][1] == "X" and gameField[1][1] == "X" and gameField[2][1] == "X":
+        return True
+    if gameField[0][2] == "X" and gameField[1][2] == "X" and gameField[2][2] == "X":
+        return True
+    if gameField[0][0] == "X" and gameField[1][1] == "X" and gameField[2][2] == "X":
+        return True
+    if gameField[0][2] == "X" and gameField[1][1] == "X" and gameField[2][0] == "X":
+        return True
+
+    if gameField[0][0] == "O" and gameField[0][1] == "O" and gameField[0][2] == "O":
+        return True
+    if gameField[1][0] == "O" and gameField[1][1] == "O" and gameField[1][2] == "O":
+        return True
+    if gameField[2][0] == "O" and gameField[2][1] == "O" and gameField[2][2] == "O":
+        return True
+    if gameField[0][0] == "O" and gameField[1][0] == "O" and gameField[2][0] == "O":
+        return True
+    if gameField[0][1] == "O" and gameField[1][1] == "O" and gameField[2][1] == "O":
+        return True
+    if gameField[0][2] == "O" and gameField[1][2] == "O" and gameField[2][2] == "O":
+        return True
+    if gameField[0][0] == "O" and gameField[1][1] == "O" and gameField[2][2] == "O":
+        return True
+    if gameField[0][2] == "O" and gameField[1][1] == "O" and gameField[2][0] == "O":
+        return True
+    return False
+
+
+def switchXO(XorO: bool):
+    if (XorO):
+        return "X"
+    else:
+        return "O"
+
+def getPos(i: int, symbol: str):
+    if i == 1: gameField[0][0] = symbol
+    if i == 2: gameField[0][1] = symbol
+    if i == 3: gameField[0][2] = symbol
+    if i == 4: gameField[1][0] = symbol
+    if i == 5: gameField[1][1] = symbol
+    if i == 6: gameField[1][2] = symbol
+    if i == 7: gameField[2][0] = symbol
+    if i == 8: gameField[2][1] = symbol
+    if i == 9: gameField[2][2] = symbol
+
+while (not checkGameState()):
+    print(checkGameState())
+    printCurrentField()
+    position = getNumberFromUser()
+    getPos(position, switchXO(currentUser))
+    currentUser = not currentUser
+
+printCurrentField()
+print("Поздравляем")
