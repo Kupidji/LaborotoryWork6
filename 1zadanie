@@ -1,0 +1,6 @@
+#1 задание
+for a in range(1000):
+    for b in range(1000):
+        for c in range(1000):
+            if (str(a) + str(b) + str(c) == str(a**3 + b**3 + c**3)):
+                print(a, b, c, (a**3 + b**3 + c**3))
